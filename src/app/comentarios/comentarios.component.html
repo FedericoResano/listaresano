@@ -1,0 +1,19 @@
+<div class="row pagina">
+    
+    <div class="col-lg-4 pagina">
+        <label for="nombre">Usuario: </label>
+        <input type="text" class="form-control inputmask" data-inputmask="'mask': '999', 'removeMaskOnSubmit': 'true'"
+            id="nombre" [(ngModel)]="nombre" placeholder="Ingrese su usuario" >
+    </div>
+    <div class="col-lg-8 pagina">
+        <label for="comentario">Comentario: </label>
+        <input type="text" class="form-control inputmask" data-inputmask="'mask': '999', 'removeMaskOnSubmit': 'true'"
+            id="comentario" [(ngModel)]="comentario" placeholder="Ingrese su comentario" >
+    </div>
+</div>
+<div class="row boton">
+    <div class="col-lg-1">
+        <button type="button" class="btn btn-primary" (click)="verEnConsola(nombre, comentario)">Publicar</button>
+    </div>
+</div>
+

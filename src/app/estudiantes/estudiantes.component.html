@@ -1,0 +1,42 @@
+<!----Inicializo el For para instanciar a todos los alumnos-->
+<div class="pagina" *ngFor='let estudiante of estudiantes'>
+
+    <!---- Determino la clase que va a tener cada card, dependiendo de si es primer curso o no-->
+    <div class="col-lg-8" style="margin: 0 auto;"
+        [ngClass]="estudiante.esprimercurso ? 'card text-white bg-primary mb-3 anchocard': 'card text-white bg-success mb-3 anchocard'">
+        <div class="card-body">
+            <!---- Agrego Pipe para que el apellido esté todo en mayúsculas-->
+            <h5 class="card-title">{{estudiante.apellido | uppercase }}, {{estudiante.nombre}}</h5>
+
+            <!--- Agrego Pipe para formatear la fecha -->
+
+            <li> Fecha de nacimiento: {{estudiante.fechanacimiento | date: 'dd/MM/YYYY'}}</li>
+            <li> Edad: {{estudiante.edad}} </li>
+            <li> Cursa por primera vez: {{estudiante.esprimercurso ? 'Sí': 'No'}}</li>
+
+            <!--- Agrego el símbolo de femenino o masculino, dependiendo el sexo-->
+            <li *ngIf="estudiante.sexo=='Femenino'; else otrosexo">
+                Sexo: {{estudiante.sexo}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-gender-female" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5z" />
+                </svg>
+            </li>
+            <ng-template #otrosexo>
+                <li>
+                    Sexo: {{estudiante.sexo}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-gender-male" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2H9.5zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+                    </svg>
+                </li>
+            </ng-template>
+            <li>
+                Cantidad de cursos realizados: {{estudiante.cantidadcursos}}
+            </li>
+        </div>
+    </div>
+
+</div>
